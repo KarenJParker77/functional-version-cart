@@ -5,12 +5,12 @@ import "./App.css";
 
 const App = () => {
   const [shoppingCartItems, setShoppingCartItems] = useState([]);
-
+  const [products, setProducts] = useState([]);
   const getApiData = async () => {
     try {
       const products = await axios.get("https://fakestoreapi.com/products");
 
-      setShoppingCartItems(products.data);
+      setProducts(products.data);
     } catch (error) {
       console.log("API Error!");
     }
@@ -36,6 +36,7 @@ const App = () => {
   };
 
   const onBuyNow = (id) => {
+    console.log("it worked", id);
     const localShoppingCartItems = [...shoppingCartItems];
 
     const indexOfCartItem = localShoppingCartItems.findIndex(

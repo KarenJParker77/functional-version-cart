@@ -3,6 +3,7 @@ import { processShoppingCart } from "../utils";
 import ShoppingCartItem from "./ShoppingCart/ShoppingCartItem";
 
 const ShoppingCart = (props) => {
+  console.log(props);
   const { products, shoppingCartItems } = props;
   const processedCart = processShoppingCart(products, shoppingCartItems);
 
@@ -12,8 +13,9 @@ const ShoppingCart = (props) => {
       <h1>£{processedCart.cartTotal.toFixed(2)}</h1>
       {processedCart.shoppingCartItems.map((item) => (
         <ShoppingCartItem
-          key={props.item.id}
-          item={props.item}
+          key={item.id}
+          item={item}
+          // keep props below. because onDeleteCartItem is the same for everyhting we map over
           onDeleteCartItem={props.onDeleteCartItem}
         />
       ))}
